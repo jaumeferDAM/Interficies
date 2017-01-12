@@ -15,10 +15,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Tauler t = new Tauler(4,4);
-        t.IniciarArrays();
+        Tauler t = new Tauler();
+//        t.IniciarArrays();
+        
 //        t.imprimirTauler();
-        t.menuInicial();
+        
     }
     
 }

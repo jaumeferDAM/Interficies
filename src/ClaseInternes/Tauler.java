@@ -17,22 +17,26 @@ import javafx.scene.paint.Color;
 public class Tauler {
 
     private Casella[][] tauler;
+    int files, columnes;
+    boolean Estat = false;
 
-    public Tauler(int files, int columnes) {
-        tauler = new Casella[files][columnes];
+    public Tauler() {
+        this.tauler = tauler;
+       IniciarArrays();
+       RespostaMenu();
     }
 
 //    Casella c = new Casella(Boolean.FALSE, Color.GREEN);
     Scanner lector = new Scanner(System.in);
 
 //    Casella[][] caselles = new Casella[5][5];
-    public void menuInicial() {
-        System.out.println("MENU PRINCIPAL \n"
-                + "1. Veure tauler \n"
-                + "2. Modificar una casella");
-        RespostaMenu();
-    }
-
+//    public int menuInicial() {
+//        System.out.println("MENU PRINCIPAL \n"
+//                + "1. Veure tauler \n"
+//                + "2. Modificar una casella");
+//      
+//        return lector.nextInt();
+//    }
     /**
      * for (Fitxa fitxa : fitxesJugades) { tauler.append(" |");
      * tauler.append(fitxa.getValors()[0]); tauler.append(":");
@@ -79,9 +83,9 @@ public class Tauler {
         System.out.println("Introdueix la quantitat de columnes");
         int columnes = lector.nextInt();
         lector.nextLine();
-
-        for (int i = 0; i < tauler.length; i++) {
-            for (int j = 0; j < tauler.length; j++) {
+        tauler = new Casella[files][columnes];
+        for (int i = 0; i < files; i++) {
+            for (int j = 0; j < columnes; j++) {
                 tauler[i][j] = new Casella();
             }
         }
@@ -92,7 +96,7 @@ public class Tauler {
 //        if (c.getC() == Color.RED && c.getEstat() == Boolean.FALSE) {
         for (Casella[] tauler1 : tauler) {
             for (int j = 0; j < tauler.length; j++) {
-                System.out.print(tauler1[j].getC() + " ");
+                System.out.print(tauler1[j].getEstat()+ " ");
             }
             System.out.println("");
 
@@ -104,16 +108,23 @@ public class Tauler {
         System.out.println("Introdueix la poscio de la casella (X,Y): ");
         int X = lector.nextInt();
         int Y = lector.nextInt();
-        System.out.println("Introdueix l'estat de la casella");
-        tauler[X][Y].setEstat(lector.nextBoolean());
 
+        tauler[X-1][Y-1].setEstat(!tauler[X][Y].getEstat());
+        tauler[X-1][Y-1].setC(Color.RED);
+        System.out.println("Estat cambiat correctament");
     }
 
     public void RespostaMenu() {
 
-        int accio = lector.nextInt();
+        int opcio;
         do {
-            switch (accio) {
+            System.out.print("Escogeix una opcio\n"
+                    + "1- Mostra tauler\n"
+                    + "2- Modifica casella\n"
+                    + "3- Sortir\n");
+
+            opcio = lector.nextInt();
+            switch (opcio) {
                 case 1:
                     imprimirTauler();
                     break;
@@ -121,7 +132,13 @@ public class Tauler {
                 case 2:
                     modificarCasella();
                     break;
+                case 3:
+                    System.exit(0);
+                default:
+                    System.out.println("Selecciona una opcio valida!");
+                    break;
             }
-        } while (4 == 2);
+        } while (true);
+
     }
 }
