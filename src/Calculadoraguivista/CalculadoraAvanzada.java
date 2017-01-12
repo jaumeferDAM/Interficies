@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
  *
  * @author Jaume
  */
-public class CalculadoraAvanzada extends javax.swing.JPanel {
+public class CalculadoraAvanzada extends javax.swing.JFrame {
 
        private GestioCalculadoraAvanzada gCal;
 
@@ -24,7 +24,7 @@ public class CalculadoraAvanzada extends javax.swing.JPanel {
         gCal = new GestioCalculadoraAvanzada(this);
         initComponents();
         this.setSize(400, 500);
-//        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         inicia();
     }
 

@@ -85,22 +85,20 @@ public class Tauler {
                 tauler[i][j] = new Casella();
             }
         }
-           menuInicial();
+
     }
 
     public void imprimirTauler() {
 //        if (c.getC() == Color.RED && c.getEstat() == Boolean.FALSE) {
-        for (int i = 0; i < tauler.length; i++) {
+        for (Casella[] tauler1 : tauler) {
             for (int j = 0; j < tauler.length; j++) {
-                System.out.print(tauler[i][j].getC() + " ");
+                System.out.print(tauler1[j].getC() + " ");
             }
             System.out.println("");
 
 //        }
         }
     }
-
-    
 
     public void modificarCasella() {
         System.out.println("Introdueix la poscio de la casella (X,Y): ");
@@ -112,10 +110,8 @@ public class Tauler {
     }
 
     public void RespostaMenu() {
-     
-        System.out.println("");
+
         int accio = lector.nextInt();
-       
         do {
             switch (accio) {
                 case 1:
@@ -126,7 +122,6 @@ public class Tauler {
                     modificarCasella();
                     break;
             }
-
-        } while (true);
+        } while (4 == 2);
     }
 }

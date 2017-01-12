@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         Tauler t = new Tauler(4,4);
         t.IniciarArrays();
-        t.imprimirTauler();
+//        t.imprimirTauler();
         t.menuInicial();
     }
     
